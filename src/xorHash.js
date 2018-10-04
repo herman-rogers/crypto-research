@@ -1,16 +1,5 @@
 const utils = require('./utils');
 
-function decryptXorHash(bytes, xor) {
-  const decrypted = [];
-
-  for(let i = 0; i < bytes.length; i += 1) {
-    const byte = bytes[i];
-
-    decrypted.push(byte ^ xor);
-  }
-  return decrypted;
-}
-
 module.exports = {
   xorHash: (hexOne, hexTwo) => {
     const hexOneBytes = utils.convertHexToByteArray(hexOne);
@@ -26,15 +15,5 @@ module.exports = {
 
     // Returns a hex combination xor'd from two hex's
     return utils.convertByteArrayToHex(hash);
-  },
-
-  xorHashCrack: (hex, characters) => {
-    const hexBytes = utils.convertHexToByteArray(hex);
-    let decrypted = '';
-
-    for(let i = 0; i < characters.length; i += 1) {
-      decrypted = decryptXorHash(hexBytes, characters.charCodeAt(i));
-    }
-    return decrypted;
   },
 };

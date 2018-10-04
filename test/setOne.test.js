@@ -1,6 +1,7 @@
 const assert = require('assert');
 const utils = require('../src/utils');
 const xor = require('../src/xorHash');
+const crack = require('../src/xorCrack');
 
 describe('set one', () => {
   it('completes challenge one, convert hex to base64', () => {
@@ -25,12 +26,8 @@ describe('set one', () => {
 
   it('completes set three, can crack xor hash data', () => {
     const hex = '1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736';
-    const cracked = xor.xorHashCrack(hex, 'X');
-    let crackedString = Buffer.from(cracked).toString();
+    const cracked = crack.xorHashCrack(hex, 'X');
 
-    crackedString = crackedString.replace(/\0/g, '');
-    crackedString = crackedString.replace(/\07/g, '');
-
-    assert.equal(crackedString, 'Cooking MC\'s like a pound of bacon');
+    assert.equal(cracked, 'Cooking MC\'s like a pound of bacon');
   });
 });
