@@ -1,4 +1,4 @@
-const utils = require('../utils/utils');
+const utils = require('./utils');
 
 function decryptXorHash(bytes, xor) {
   const decrypted = [];
@@ -12,7 +12,7 @@ function decryptXorHash(bytes, xor) {
 }
 
 module.exports = {
-  challengeTwoxorCombination: (hexOne, hexTwo) => {
+  xorHash: (hexOne, hexTwo) => {
     const hexOneBytes = utils.convertHexToByteArray(hexOne);
     const hexTwoBytes = utils.convertHexToByteArray(hexTwo);
 
@@ -28,7 +28,7 @@ module.exports = {
     return utils.convertByteArrayToHex(hash);
   },
 
-  challengeThreexorHexCrack: (hex, characters) => {
+  xorHashCrack: (hex, characters) => {
     const hexBytes = utils.convertHexToByteArray(hex);
     let decrypted = '';
 

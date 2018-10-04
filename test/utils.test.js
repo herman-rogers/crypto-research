@@ -1,17 +1,7 @@
 const assert = require('assert');
-const utils = require('../utils/utils');
+const utils = require('../src/utils');
 
 describe('utils', () => {
-  it('converts hex to base64', () => {
-    const hex =
-      '49276d206b696c6c696e6720796f757220627261696e206c696b65206120706f69736f6e6f7573206d757368726f6f6d';
-    const expected =
-      'SSdtIGtpbGxpbmcgeW91ciBicmFpbiBsaWtlIGEgcG9pc29ub3VzIG11c2hyb29t';
-    const base64Encoded = utils.base64(hex, 'hex');
-
-    assert.equal(base64Encoded, expected);
-  });
-
   it('converts hex to byte array', () => {
     const hex = '1c0111001f010100061a024b53535009181c';
     const byteArray = utils.convertHexToByteArray(hex);
