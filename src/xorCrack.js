@@ -1,5 +1,5 @@
 const utils = require('./utils');
-const charFrequency = ['ETAOINSHRDLUBCFGJKMPQVWXYZ'];
+const charFrequency = 'ETAOINSHRDLUBCFGJKMPQVWXYZ';
 
 function hexToText(hex) {
   let decoded = Buffer.from(hex).toString();
