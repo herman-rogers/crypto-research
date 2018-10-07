@@ -1,8 +1,8 @@
 const utils = require('./utils');
 const charFrequency = 'ETAOINSHRDLUBCFGJKMPQVWXYZ';
 
-function hexToText(hex) {
-  let decoded = Buffer.from(hex).toString();
+function arrayBufferToString(buffer) {
+  let decoded = Buffer.from(buffer).toString();
   decoded = decoded.replace(/\0/g, '');
   decoded = decoded.replace(/\07/g, '');
 
@@ -19,7 +19,7 @@ function decryptXorHash(bytes, xor) {
     decrypted.push(data);
   }
 
-  return hexToText(decrypted);
+  return arrayBufferToString(decrypted);
 }
 
 module.exports = {

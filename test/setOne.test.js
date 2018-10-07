@@ -29,23 +29,23 @@ describe('set one', () => {
 
   it('completes challenge three, can crack xor hash data', () => {
     const hex = vectors.xorCrackOne;
-    const cracked = crack.xorHashCrack(hex, 'X');
+    const cracked = crack.xorHashCrack(hex);
 
     assert.equal(cracked, 'Cooking MC\'s like a pound of bacon');
   });
 
   it('completes challenge four, detect single char xor', () => {
-    // let crackedData = {};
-    // const reader = lineReader.createInterface({
-    //   input: fs.createReadStream(`${__dirname}/hash_file.txt`)
-    // });
+    let crackedData = {};
+    const reader = lineReader.createInterface({
+      input: fs.createReadStream(`${__dirname}/hash_file.txt`)
+    });
 
-    // reader.on('line', (line) => {
-    //   crackedData[line] = crack.xorHashCrack(line);
-    // }).on('close', () => {
-    //   fs.writeFile(`${__dirname}/cracked.json`, JSON.stringify(crackedData), () => {
-    //     console.log("The file was saved!");
-    //   });
-    // });
+    reader.on('line', (line) => {
+      crackedData[line] = crack.xorHashCrack(line);
+    }).on('close', () => {
+      fs.writeFile(`${__dirname}/cracked.json`, JSON.stringify(crackedData), () => {
+        console.log("The file was saved!");
+      });
+    });
   })
 });
